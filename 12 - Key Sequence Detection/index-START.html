@@ -7,6 +7,26 @@
 </head>
 <body>
 <script>
+  const pressed = []
+  const secretCode = 'wengier'
+
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key)
+    pressed.push(e.key)
+
+    // array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+    // start 若為負，則會從陣列中最後一個元素開始往前改動（起始為 -1）且若其絕對值大於陣列的長度，則會被設為 0
+    // deleteCount 若為 0 或是負數，則不會有元素被刪除
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length)
+    if (pressed.join('').includes(secretCode)) {
+      console.log('DING! DING!')
+      cornify_add();
+    }
+    console.log(pressed);
+  })
+
+
+
 </script>
 </body>
 </html>
