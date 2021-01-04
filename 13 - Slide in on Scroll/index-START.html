@@ -45,13 +45,16 @@
   <script>
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
+      // 閉包（Closure）的應用
       return function() {
         var context = this, args = arguments;
         var later = function() {
           timeout = null;
+          // fun.apply(thisArg, [argsArray]) 回傳值為傳入的 this 值及一組參數後得到的結果
           if (!immediate) func.apply(context, args);
         };
         var callNow = immediate && !timeout;
+        // 若連續觸發監聽事件，則清空setTimeout計時器，以控制觸發頻率
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
@@ -66,6 +69,7 @@
           const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2;
           // bottom of the image
           const imageBottom = sliderImage.offsetTop + sliderImage.height;
+          // isHalfShown = (window.scrollY + window.innerHeight) > sliderImage.offsetTop + sliderImage.height / 2; 比較直觀
           const isHalfShown = slideInAt > sliderImage.offsetTop;
           const isNotScrolledPast = window.scrollY < imageBottom;
           if (isHalfShown && isNotScrolledPast) {
