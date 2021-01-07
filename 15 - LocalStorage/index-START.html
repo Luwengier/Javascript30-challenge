@@ -28,9 +28,11 @@
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
+  // 從LocalStorage取出為字串，需parse回原來格式。
   const items = JSON.parse(localStorage.getItem('items')) || [];
 
     function addItem(e) {
+      // 防止預設跳頁等行為
       e.preventDefault();
       const text = (this.querySelector('[name=item]')).value;
       const item = {
@@ -40,7 +42,9 @@
 
       items.push(item);
       populateList(items, itemsList);
+      // 存進LocalStorage的資料須先字串化。
       localStorage.setItem('items', JSON.stringify(items));
+      // form標籤可使用reset()重置內容 
       this.reset();
     }
 
