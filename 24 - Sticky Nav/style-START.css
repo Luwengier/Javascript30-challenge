@@ -25,6 +25,22 @@ body {
   transition: transform 0.5s;
 }
 
+body.fixed-nav .site-wrap {
+  transform: scale(1);
+}
+
+body .site-wrap img {
+  float: left;
+  margin-right: 10px;
+  box-shadow: -4px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+body .site-wrap img.align-right {
+  float: right;
+  margin-left: 10px;
+  box-shadow: 4px 2px 8px rgba(0, 0, 0, 0.4);
+}
+
 header {
   text-align: center;
   height: 50vh;
@@ -48,6 +64,11 @@ nav {
   transition: all 0.5s;
   position: relative;
   z-index: 1;
+}
+
+body.fixed-nav nav {
+  position: fixed;
+  box-shadow: 0 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 nav ul {
@@ -78,6 +99,10 @@ li.logo a {
   color: black;
 }
 
+.fixed-nav li.logo {
+  max-width: 500px;
+}
+
 nav a {
   text-decoration: none;
   padding: 20px;
@@ -85,4 +110,24 @@ nav a {
   color: white;
   transition: all 0.2s;
   text-transform: uppercase;
+}
+
+
+/* Copy from D13 */
+.slide-in {
+  opacity: 0;
+  transition: all .5s;
+}
+
+.align-left.slide-in {
+  transform: translateX(-30%) scale(0.95);
+}
+    
+.align-right.slide-in {
+  transform: translateX(30%) scale(0.95);
+}
+
+.slide-in.active {
+  opacity: 1;
+  transform: translateX(0%) scale(1);
 }
