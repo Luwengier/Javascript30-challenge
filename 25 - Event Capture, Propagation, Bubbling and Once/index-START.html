@@ -8,18 +8,52 @@
 
   <div class="one">
     <div class="two">
-      <div class="three">
-      </div>
+      <div class="three"></div>
     </div>
   </div>
 
+  <ul>
+    <li><a href="javascript:;">Buttun1</a></li>
+    <li><a href="javascript:;">Buttun2</a></li>
+    <li><a href="javascript:;">Buttun3</a></li>
+    <li><a href="javascript:;">Buttun4</a></li>
+  </ul>
+
+
+
+<button></button>
+<script>
+  const divs = document.querySelectorAll('div')
+  const button = document.querySelector('button')
+
+  function logText(e) {
+    console.log(this.classList.value)
+    e.stopPropagation() // stop bubbling!
+    // console.log(this);
+  }
+
+  divs.forEach(div => div.addEventListener('click', logText, {
+    capture: false,
+    once: true
+  }))
+
+  button.addEventListener('click', () => {
+    console.log('Click!!!')
+  }, {
+    once: true
+  })
+
+
+</script>
 <style>
   html {
     box-sizing: border-box;
   }
-  
-  *, *:before, *:after { 
-    box-sizing: inherit; 
+
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
   }
 
   div {
@@ -39,10 +73,5 @@
     background: coral;
   }
 </style>
-
-<button></button>
-<script>
-
-</script>
 </body>
 </html>

@@ -29,7 +29,7 @@ body.fixed-nav .site-wrap {
   transform: scale(1);
 }
 
-body .site-wrap img {
+body .site-wrap img.align-left {
   float: left;
   margin-right: 10px;
   box-shadow: -4px 2px 8px rgba(0, 0, 0, 0.4);
