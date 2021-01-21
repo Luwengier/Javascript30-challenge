@@ -35,6 +35,39 @@
   </div>
 
 <script>
+  const slider = document.querySelector('.items')
+  let isDown = false
+  let startX
+  let scrollLeft
+
+  slider.addEventListener('mousedown', (e) => {
+    isDown = true
+    slider.classList.add('active')
+    // pageX 是一個由MouseEvent接口返回的相對於整個文檔的x（水平）坐標以像素為單位的唯讀屬性。
+    // HTMLElement.offsetLeft返回當前元素左上角相對於HTMLElement.offsetParent 節點的左邊界偏移的像素值。
+    startX = e.pageX - slider.offsetLeft
+    scrollLeft = slider.scrollLeft
+  })
+
+  slider.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault()
+    const x = e.pageX - slider.offsetLeft
+    const walk = (x - startX) * 5
+    slider.scrollLeft = scrollLeft - walk
+  })
+
+  slider.addEventListener('mouseleave', () => {
+    isDown = false
+    slider.classList.remove('active')
+  })
+
+  slider.addEventListener('mouseup', () => {
+    isDown = false
+    slider.classList.remove('active')
+  })
+
+
 </script>
 
   </body>
