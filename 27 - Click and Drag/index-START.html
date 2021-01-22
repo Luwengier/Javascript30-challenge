@@ -47,6 +47,7 @@
     // HTMLElement.offsetLeft返回當前元素左上角相對於HTMLElement.offsetParent 節點的左邊界偏移的像素值。
     startX = e.pageX - slider.offsetLeft
     scrollLeft = slider.scrollLeft
+    console.log('start-scrollLeft', scrollLeft)
   })
 
   slider.addEventListener('mousemove', (e) => {
@@ -54,7 +55,10 @@
     e.preventDefault()
     const x = e.pageX - slider.offsetLeft
     const walk = (x - startX) * 5
+    console.log('walk', walk, 'scrollLeft', scrollLeft)
+    console.log('scrollLeft - walk', scrollLeft - walk)
     slider.scrollLeft = scrollLeft - walk
+    
   })
 
   slider.addEventListener('mouseleave', () => {
