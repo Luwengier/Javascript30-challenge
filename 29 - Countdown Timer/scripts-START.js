@@ -1,4 +1,5 @@
 // let countdown
+let raf
 const timerDisplay = document.querySelector('.display__time-left')
 const endTime = document.querySelector('.display__end-time')
 const buttons = document.querySelectorAll('[data-time]')
@@ -9,14 +10,14 @@ function startTimer() {
 }
 
 function timer(seconds) {
-  clearInterval(countdown)
+  cancelAnimationFrame(raf)
 
   const now = Date.now()
   const then = now + seconds * 1000
   displayTimeLeft(seconds)
   displayEndTime(then)
 
-  requestAnimationFrame(() => countdown(then))
+  raf = requestAnimationFrame(() => countdown(then))
 
   // countdown = setInterval(() => {
   //   const secondsLeft = Math.round((then - Date.now()) / 1000)
@@ -32,9 +33,9 @@ function countdown(then) {
   const secondsLeft = Math.round((then - Date.now()) / 1000)
     if(secondsLeft >= 0){
       displayTimeLeft(secondsLeft)
-      requestAnimationFrame(() => countdown(then))
+      raf = requestAnimationFrame(() => countdown(then))
     }else{
-      timerDisplay.textContent = 'Time Up !'
+      timerDisplay.textContent = 'Time Up !!'
     }
 }
 
